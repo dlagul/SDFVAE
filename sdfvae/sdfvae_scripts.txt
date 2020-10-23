@@ -1,5 +1,7 @@
 # Training, Testing and Evaluation
 
+# Please run data preprocessing code before running the following commands.
+
 # OPTIONS
 # dataset_path: The path of the processed training or testing dataset
 # data_nums: The size of training or testing dataset
