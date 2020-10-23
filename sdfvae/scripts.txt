@@ -1,0 +1,53 @@
+# Scripts
+
+# 1. Data Preprocessing
+
+# OPTIONS 
+# raw_data_file: KPI data file
+# label_file: The corresponding ground-truth file
+# train_data_path: The path of the preprocessed training set  
+# test_data_path: The path of the preprocessed testing set
+# test_start_time: The data later than this timestamp is considered as the testing data
+
+# VoD1
+python data_preprocess.py --raw_data_file data/vod1-data.csv --label_file data/vod1-label.csv --train_data_path data_processed/vod1-train --test_data_path data_processed/vod1-test --test_start_time 20181107000000
+
+# Live
+python data_preprocess.py --raw_data_file data/live-data.csv --label_file data/live-label.csv --train_data_path data_processed/live-train --test_data_path data_processed/live-test --test_start_time 20181120121500
+
+# Machine-1-1
+python data_preprocess.py --raw_data_file data/machine-1-1-data.csv --label_file data/machine-1-1-label.csv --train_data_path data_processed/machine-1-1-train --test_data_path data_processed/machine-1-1-test --test_start_time 20190923005800
+
+# Machine-1-5
+python data_preprocess.py --raw_data_file data/machine-1-5-data.csv --label_file data/machine-1-5-label.csv --train_data_path data_processed/machine-1-5-train --test_data_path data_processed/machine-1-5-test --test_start_time 20190919162400
+
+
+# 2. Training, Testing and Evaluation
+# OPTIONS
+# dataset_path: The path of the processed training or testing dataset
+# data_nums: The size of training or testing dataset
+# checkpoints_path: The path to store the trained models
+# n: The number of KPIs 
+# start_epoch: The model with corresponding training epochs will be resumed for testing, default is 30
+#              Set it to 40 please, if you want to test the model which trained 40 epochs 
+# llh_path: The path of log-likelihood (anomaly score) file output by testing
+
+# VoD1
+python trainer.py --dataset_path ../data_preprocess/data_processed/vod1-train --data_nums 10430 --gpu_id 0 --log_path log_trainer/vod1 --checkpoints_path model/vod1 --n 24  
+nohup python tester.py --dataset_path ../data_preprocess/data_processed/vod1-test --data_nums 11690 --gpu_id 0 --log_path log_tester/vod1 --checkpoints_path model/vod1 --n 24 --start_epoch 30 2>&1 &
+nohup python evaluation.py --llh_path log_tester/vod1 --log_path log_evaluator/vod1 --n 24 --start_epoch 30 2>&1 &
+
+# Live
+python trainer.py --dataset_path ../data_preprocess/data_processed/live-train --data_nums  7582 --gpu_id 0 --log_path log_trainer/live --checkpoints_path model/live --n 48  
+nohup python tester.py --dataset_path ../data_preprocess/data_processed/live-test --data_nums 7800 --gpu_id 0 --log_path log_tester/live --checkpoints_path model/live --n 48 --start_epoch 30 2>&1 &
+nohup python evaluation.py --llh_path log_tester/live --log_path log_evaluator/live --n 48 --start_epoch 30 2>&1 &
+
+# Machine-1-1
+python trainer.py --dataset_path ../data_preprocess/data_processed/machine-1-1-train --data_nums  28253 --gpu_id 0 --log_path log_trainer/machine-1-1 --checkpoints_path model/machine-1-1 --n 38  
+nohup python tester.py --dataset_path ../data_preprocess/data_processed/machine-1-1-test --data_nums 28469 --gpu_id 0 --log_path log_tester/machine-1-1 --checkpoints_path model/machine-1-1 --n 38 --start_epoch 30 2>&1 &
+nohup python evaluation.py --llh_path log_tester/machine-1-1 --log_path log_evaluator/machine-1-1 --n 38 --start_epoch 30 2>&1 &
+
+# Machine-1-5
+python trainer.py --dataset_path ../data_preprocess/data_processed/machine-1-5-train --data_nums  23480 --gpu_id 0 --log_path log_trainer/machine-1-5 --checkpoints_path model/machine-1-5 --n 38  
+nohup python tester.py --dataset_path ../data_preprocess/data_processed/machine-1-5-test --data_nums 23695 --gpu_id 0 --log_path log_tester/machine-1-5 --checkpoints_path model/machine-1-5 --n 38 --start_epoch 30 2>&1 &
+nohup python evaluation.py --llh_path log_tester/machine-1-5 --log_path log_evaluator/machine-1-5 --n 38 --start_epoch 30 2>&1 &
