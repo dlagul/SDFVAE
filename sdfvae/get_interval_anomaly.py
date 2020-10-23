@@ -6,7 +6,6 @@ class IntervalAnomaly:
         self.timeWindow = []
         self.anomalyWindow = []
         self.anomalyIntervalStart = ""
-        # self.anomalyIntervalEnd = "20190101000001"
         self.anomalyIntervalEnd = "20180101000001"
         self.windowsize = 3 
         self.IntervalAnomalyThreshold = 1 
