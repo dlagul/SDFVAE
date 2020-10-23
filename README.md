@@ -8,19 +8,19 @@ SDFVAE is a robust and noisy-resilient anomaly detection method based on static 
 
 ### Data preprocessing
     python data_preprocess.py --raw_data_file data/machine-1-1-data.csv --label_file data/machine-1-1-label.csv --train_data_path data_processed/machine-1-1-train --test_data_path data_processed/machine-1-1-test --test_start_time 20190923005800
-**Please refer to "scripts.txt" for some details.**
+**Please refer to "data_preprocessing_scripts.txt" for some details.**
 
 ### Training
     python trainer.py --dataset_path ../data_preprocess/data_processed/machine-1-1-train --data_nums  28253 --gpu_id 0 --log_path log_trainer/machine-1-1 --checkpoints_path model/machine-1-1 --n 38
-**The detailed commands are given in "scripts.txt".**
+**The detailed commands are given in "sdfvae_scripts.txt".**
 
 ### Testing
     nohup python tester.py --dataset_path ../data_preprocess/data_processed/machine-1-1-test --data_nums 28469 --gpu_id 0 --log_path log_tester/machine-1-1 --checkpoints_path model/machine-1-1 --n 38 --start_epoch 30 2>&1 &
-**Refer to "scripts.txt" for details.**
+**Refer to "sdfvae_scripts.txt" for details.**
 
 ### Evaluation
     nohup python evaluation.py --llh_path log_tester/machine-1-1 --log_path log_evaluator/machine-1-1 --n 38 --start_epoch 30 2>&1 &
-**Please refer to "scripts.txt".**
+**Please refer to "sdfvae_scripts.txt".**
 
 ## Training Losses
 We give the example of SDFVAE training Losses on VoD1 dataset, the figure is in the directory named "training_losses". <br>
