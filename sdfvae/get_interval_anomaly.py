@@ -12,13 +12,6 @@ class IntervalAnomaly:
         self.IntervalMergeThreshold = 300 
 
     def IntervalAnomalyDetect(self, realtime, isAnomaly, anomaly_intervals):
-        '''
-        params:
-                realtime: string, as "20180101000001" total 14 bits
-                isAnomaly: bool, True (represents Anomaly) or False (represents not Anomaly)
-        return:
-                None
-        '''
         if len(self.timeWindow) < self.windowsize - 1:
             self.timeWindow.append(realtime)
             self.anomalyWindow.append(isAnomaly)
