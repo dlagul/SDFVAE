@@ -1,0 +1,23 @@
+Scripts
+# Data Preprocessing
+# OPTIONS 
+# raw_data_file: KPI data file
+# label_file: The corresponding ground-truth file
+# train_data_path: The path of the preprocessed training set  
+# test_data_path: The path of the preprocessed testing set
+# test_start_time: The data later than this timestamp is considered as the testing data
+
+# VoD1
+python data_preprocess.py --raw_data_file data/vod1-data.csv --label_file data/vod1-label.csv --train_data_path data_processed/vod1-train --test_data_path data_processed/vod1-test --test_start_time 20181107000000
+
+# VoD2
+python data_preprocess.py --raw_data_file data/vod2-data.csv --label_file data/vod2-label.csv --train_data_path data_processed/vod2-train --test_data_path data_processed/vod2-test --test_start_time 20191009000000
+
+# Live
+python data_preprocess.py --raw_data_file data/live-data.csv --label_file data/live-label.csv --train_data_path data_processed/live-train --test_data_path data_processed/live-test --test_start_time 20181120121500
+
+# Machine-1-1
+python data_preprocess.py --raw_data_file data/machine-1-1-data.csv --label_file data/machine-1-1-label.csv --train_data_path data_processed/machine-1-1-train --test_data_path data_processed/machine-1-1-test --test_start_time 20190923005800
+
+# Machine-1-5
+python data_preprocess.py --raw_data_file data/machine-1-5-data.csv --label_file data/machine-1-5-label.csv --train_data_path data_processed/machine-1-5-train --test_data_path data_processed/machine-1-5-test --test_start_time 20190919162400
