@@ -181,7 +181,7 @@ class SDFVAE(nn.Module):
             if isinstance(m, nn.Conv1d) or  isinstance(m, nn.Conv2d) or isinstance(m, nn.ConvTranspose2d) or isinstance(m, nn.Linear):
                 nn.init.kaiming_normal_(m.weight)
 
-
+    # Time-dependent prior distribution of dynamic latent variables 
     def sample_d_lstmcell(self, batch_size, random_sampling=True):
         d_out = None
         d_means = None
