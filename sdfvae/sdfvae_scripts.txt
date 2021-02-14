@@ -11,21 +11,6 @@
 #              Set it to 40 please, if you want to test the model which trained 40 epochs 
 # llh_path: The path of log-likelihood (anomaly score) file output by testing
 
-# VoD1
-python trainer.py --dataset_path ../data_preprocess/data_processed/vod1-train --data_nums 10430 --gpu_id 0 --log_path log_trainer/vod1 --checkpoints_path model/vod1 --n 24  
-nohup python tester.py --dataset_path ../data_preprocess/data_processed/vod1-test --data_nums 11690 --gpu_id 0 --log_path log_tester/vod1 --checkpoints_path model/vod1 --n 24 --start_epoch 30 2>&1 &
-nohup python evaluation.py --llh_path log_tester/vod1 --log_path log_evaluator/vod1 --n 24 --start_epoch 30 2>&1 &
-
-# VoD2
-python trainer.py --dataset_path ../data_preprocess/data_processed/vod2-train --data_nums 51112 --gpu_id 0 --log_path log_trainer/vod2 --checkpoints_path model/vod2 --n 16  
-nohup python tester.py --dataset_path ../data_preprocess/data_processed/vod2-test --data_nums 40160 --gpu_id 0 --log_path log_tester/vod2 --checkpoints_path model/vod2 --n 16 --start_epoch 30 2>&1 &
-nohup python evaluation.py --llh_path log_tester/vod2 --log_path log_evaluator/vod2 --n 16 --start_epoch 30 2>&1 &
-
-# Live
-python trainer.py --dataset_path ../data_preprocess/data_processed/live-train --data_nums  7582 --gpu_id 0 --log_path log_trainer/live --checkpoints_path model/live --n 48  
-nohup python tester.py --dataset_path ../data_preprocess/data_processed/live-test --data_nums 7800 --gpu_id 0 --log_path log_tester/live --checkpoints_path model/live --n 48 --start_epoch 30 2>&1 &
-nohup python evaluation.py --llh_path log_tester/live --log_path log_evaluator/live --n 48 --start_epoch 30 2>&1 &
-
 # Machine-1-1
 python trainer.py --dataset_path ../data_preprocess/data_processed/machine-1-1-train --data_nums  28253 --gpu_id 0 --log_path log_trainer/machine-1-1 --checkpoints_path model/machine-1-1 --n 38  
 nohup python tester.py --dataset_path ../data_preprocess/data_processed/machine-1-1-test --data_nums 28469 --gpu_id 0 --log_path log_tester/machine-1-1 --checkpoints_path model/machine-1-1 --n 38 --start_epoch 30 2>&1 &
