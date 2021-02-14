@@ -24,7 +24,7 @@ SDFVAE is a robust and noisy-resilient anomaly detection method based on static 
 
 ## Training Losses
 We give the example of SDFVAE training Losses on VoD1 dataset, the figure is in the directory named "training_losses". <br>
-The results show that our model tends to converge within 30 epochs. <br>
+The results show that our model tends to converge around 30 epochs. <br>
 Please refer to the directory named "log_trainer" for more details about training losses when you running SDFVAE.
 
 ## Testing results
@@ -40,22 +40,8 @@ We obtain all F1-score by enumerating all thresholds and use the best F1-score a
 
 
 # Exp_datasets
-Three multivariate CDN multivariate KPI datasets，including the dataset of VOD1, VOD2 and LIVE, are used in our work. Each of them spans 78, 64 and 54 days, respectively.  Among them, VOD1 and VOD2 correspond to two video-on-demand websites while the other corresponds to a live streaming website.
 
 ## Dataset Information
-
-### Basic Statistics
-
-Statistics | VoD1 | VoD2 | Live
---- | --- | --- | ---
-Number of KPIs | 24 | 16 | 48
-Durations (day) | 78 | 64 | 54
-Granularity (min) | 5 | 1 | 5
-Number of points | 22,356 | 91,507 | 15,617
-Number of anomaly segments | 7 | 5 | 6
-Anomaly ratio (%) | 1.6 | 0.434 | 1.24
-Train period | 1 ∼ 10,656 | 1 ~ 51,336 | 1 ~ 7,808
-Test period | 10,657 ∼ 22,356 | 51,337 ~ 91,507 | 7,809 ~ 15,617
 
 ### Data format
 There are 2 CSV files of each dataset, one is the KPIs data file, the other is the corresponding ground-truth file. <br>
@@ -77,19 +63,8 @@ Timestamp | 20181001000500  | 20181001001000 | 20181001001500 | ...
 --- | --- | --- | --- | ---
 label | 0 | 0 | 1 | ...
 
-#### Some notes on data
-We notice that the KPIs data file and the corresponding ground-truth file cannot be downloaded due to each of *the file is too big to be anonymized (beyond 1MB, Github limit).* <br>
-Thus we split the data and put them in the directory name "data_preprocess/data_n_kpi". <br>
-Please reconstruct the data in the same format as the described above and put them in "data_preprocess/data" if you want to reproduce some experiments based on these data. <br>
-We are sorry for the inconvenience of testing SDFVAE for these reasons.
-
 ### Public Dataset 
 The public dataset (SMD) used in our evaluation experiments as well as its detailed description can be found in web sites:
 https://github.com/NetManAIOps/OmniAnomaly
 
 In order to make it easy for reviewers to run our code on SMD, we select 2 of 28 namely "machine-1-1.txt" and "machine-1-5.txt" as an example. We add the timestamp to the two datasets to create the format required by our data preprocessing code. Please do not forget to add the timestamp if you want to test SDFVAE on others datasets. *It should be noted that SDFVAE never utilise any information of these timestamps to improve its performance.* 
-
-
-
-**Note that all KPIs are normalized and we omitted the real name of each KPI for confidentiality, but this does not affect the accuracy of the evaluation experiments.**
-
