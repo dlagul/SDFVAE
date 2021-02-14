@@ -24,13 +24,13 @@ SDFVAE is a robust and noisy-resilient anomaly detection method based on static 
 
 ## Training Losses
 We give the example of SDFVAE training Losses on VoD1 dataset, the figure is in the directory named "training_losses". <br>
-![image](https://github.com/dlagul/SDFVAE/blob/main/training_losses/vod1_training_losses.png)
+![image](https://github.com/dlagul/SDFVAE/blob/main/training_losses/vod1_training_losses.png) <br>
 The results show that our model tends to converge around 30 epochs. <br>
 Please refer to the directory named "log_trainer" for more details about training losses when you running SDFVAE.
 
 ## Testing results
 We show an example of the log-likelihood tested on "machine-1-1", the picture is in the directory named "testing_results". <br>
-![image](https://github.com/dlagul/SDFVAE/blob/main/testing_results/sdfvae-anomaly-score-on-machine-1-1.jpg)
+![image](https://github.com/dlagul/SDFVAE/blob/main/testing_results/sdfvae-anomaly-score-on-machine-1-1.jpg) <br>
 Regions highlighted in red represent the ground-truth anomaly segments. The blue line is the log-likelihood or anomaly score output by SDFVAE. <br>
 We are able to determine the anomalies via a specific threshold, due to the lower the log-likelihood the higher the anomaly score. <br> 
 Since we do not focus on the thresholding technique, in practice, the threshold for detecting anomaly from the anomaly score can be selected by the best F1-score. <br>
