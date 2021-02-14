@@ -69,4 +69,4 @@ label | 0 | 0 | 1 | ...
 The public dataset (SMD) used in our evaluation experiments as well as its detailed description can be found in web sites:
 https://github.com/NetManAIOps/OmniAnomaly
 
-In order to make it easy for reviewers to run our code on SMD, we select 2 of 28 namely "machine-1-1.txt" and "machine-1-5.txt" as an example. We add the timestamp to the two datasets to create the format required by our data preprocessing code. Please do not forget to add the timestamp if you want to test SDFVAE on others datasets. *It should be noted that SDFVAE never utilise any information of these timestamps to improve its performance.* 
+In order to make it easy to run our code on SMD, we select 2 of 28 namely "machine-1-1.txt" and "machine-1-5.txt" as an example. We add the timestamp to the two datasets to create the format required by our data preprocessing code. Please do not forget to add the timestamp if you want to test SDFVAE on others datasets. *It should be noted that SDFVAE never utilise any information of these timestamps to improve its performance.* 
