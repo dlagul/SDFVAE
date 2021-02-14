@@ -1,1 +1,0 @@
-The data in "data_preprocess/data_n_kpi", should be reconstructed in the same format as we described in "README.md", then put them in this directory if you want to reproduce some experiments based on these data. The details about data preprocessing can be found in "data_preprocessing_scripts.txt".
