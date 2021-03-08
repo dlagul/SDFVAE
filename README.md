@@ -11,11 +11,11 @@ SDFVAE is a robust and noisy-resilient anomaly detection method based on static 
 **Please refer to "data_preprocess/data_preprocessing_scripts.txt" for some details.**
 
 ### Training
-    python trainer.py --dataset_path ../data_preprocess/data_processed/machine-1-1-train --data_nums  28253 --gpu_id 0 --log_path log_trainer/machine-1-1 --checkpoints_path model/machine-1-1 --n 38
+    python trainer.py --dataset_path ../data_preprocess/data_processed/machine-1-1-train --gpu_id 0 --log_path log_trainer/machine-1-1 --checkpoints_path model/machine-1-1 --n 38
 **The detailed commands are given in "sdfvae/sdfvae_scripts.txt".**
 
 ### Testing
-    nohup python tester.py --dataset_path ../data_preprocess/data_processed/machine-1-1-test --data_nums 28469 --gpu_id 0 --log_path log_tester/machine-1-1 --checkpoints_path model/machine-1-1 --n 38 --start_epoch 30 2>&1 &
+    nohup python tester.py --dataset_path ../data_preprocess/data_processed/machine-1-1-test --gpu_id 0 --log_path log_tester/machine-1-1 --checkpoints_path model/machine-1-1 --n 38 --start_epoch 30 2>&1 &
 **Refer to "sdfvae/sdfvae_scripts.txt" for details.**
 
 ### Evaluation
