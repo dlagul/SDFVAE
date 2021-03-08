@@ -4,7 +4,6 @@
 
 # OPTIONS
 # dataset_path: The path of the processed training or testing dataset
-# data_nums: The size of training or testing dataset
 # checkpoints_path: The path to store the trained models
 # n: The number of KPIs 
 # start_epoch: The model with corresponding training epochs will be resumed for testing, default is 30
