@@ -204,7 +204,7 @@ class SDFVAE(nn.Module):
             
             When t = 2:
             # Here d_2 ~ p(d_2|h_1), since h1 = r_p(h_0, d_1), d_2 ~ p(d_2|d_1), we still sample d_2 based on reparameterization trick
-            # It should be noted that p(d_2|d_1) is not N(0,I), due to d_mean_2 and d_logvar_0 are no longer 0,
+            # It should be noted that p(d_2|d_1) is not N(0,I), due to d_mean_2 and d_logvar_2 are no longer 0,
             # but parameterized by NNs.
             # Then update h_2 by using Eq. (2), h2 = r_p(h_1, d_2),
             # So we construct the time-dependent prior of latent variable d
