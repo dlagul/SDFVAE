@@ -325,6 +325,7 @@ class SDFVAE(nn.Module):
                 d_means = torch.cat((d_means, d_mean_t.unsqueeze(1)), dim=1) 
                 d_logvars = torch.cat((d_logvars, d_logvar_t.unsqueeze(1)), dim=1) 
                 h_out = torch.cat((h_out, h_t.unsqueeze(1)), dim=1)
+            # We update h_t here, because we want to get the tupples like (h_0, d_1), (h_1, d_2), i.e., (h_(t-1), d_t)
             h_t, c_t = self.d_rnn(torch.cat([phi_conv_t, phi_d_t], 1), (h_t, c_t))
         return d_means, d_logvars, d_out, h_out
  
