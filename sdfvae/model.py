@@ -262,6 +262,7 @@ class SDFVAE(nn.Module):
             raise ValueError('Unknown encoder and decoder: {}'.format(self.enc_dec))
         return x
 
+    # See https://arxiv.org/pdf/1606.05908.pdf, Page 11, Equation (10) for details.
     def reparameterize(self, mean, logvar, random_sampling=True):
         if random_sampling is True:
             eps = torch.randn_like(logvar)
