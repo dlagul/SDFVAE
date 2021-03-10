@@ -297,7 +297,7 @@ class SDFVAE(nn.Module):
 
         for t in range(self.T):
             '''
-            Note: the following t denotes the index of x_t, not the t in the loop
+            Note: the following t in the comments denotes the index of x_t, not the t in the loop
             When t = 1:
             # (1) d_1 ~ p(d_1|d_<1,x_=<1), Eq. (10) (sample d_1 based on reparameterization trick)
             # (2) h_1 = r(h_0, d_1, x_1), Eq. (3)
