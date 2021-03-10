@@ -82,6 +82,8 @@ class Tester(object):
     def loss_fn(self, original_seq, recon_seq_mu, recon_seq_logvar, s_mean, s_logvar, d_post_mean, d_post_logvar, d_prior_mean, d_prior_logvar):
         batch_size = original_seq.size(0)
         # See https://arxiv.org/pdf/1606.05908.pdf, Page 9, Section 2.2 for details.
+        # The constant items in the loss function (not the coefficients) can be any number here, or even omitted        
+        # due to they have no any impact on gradientis propagation during training. So do in testing.
         # log(N(x|mu,var))
         # = log{1/(sqrt(2*pi)*var)exp{-(x-mu)^2/(2*var^2)}} 
         # = -0.5*{log(2*pi)+2*log(var)+[(x-mu)/exp{log(var)}]^2}
@@ -101,6 +103,9 @@ class Tester(object):
     
     def loglikelihood_last_timestamp(self, x, recon_x_mu, recon_x_logvar):
         # See https://arxiv.org/pdf/1606.05908.pdf, Page 9, Section 2.2 for details.
+        # The constant items in the loss function (not the coefficients) can be any number here, or even omitted        
+        # due to they have no any impact on gradientis propagation during training. 
+        # So do in testing, because they also have no any impact on the results (all anomaly scores increase or decrease to the same extent).
         # log(N(x|mu,var))
         # = log{1/(sqrt(2*pi)*var)exp{-(x-mu)^2/(2*var^2)}} 
         # = -0.5*{log(2*pi)+2*log(var)+[(x-mu)/exp{log(var)}]^2}
