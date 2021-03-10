@@ -174,8 +174,7 @@ class Evaluator():
             self.eval_metrics['TN'] = TN
             self.eval_metrics['FP'] = FP
             self.eval_metrics['Fpr'] = fpr
-            self.eval_metrics['Tpr'] = tpr   
-            self.logger.log_evaluator(self.eval_metrics)    
+            self.eval_metrics['Tpr'] = tpr      
             # If the recall has been reached to 1.0, we break the loop, due to the best f1-score has been achieved 
             # Since as the threshold increases, recall remains unchanged (1.0), while precision decreases and thus f1-score decreases
             if float(recall) < 1.0:
