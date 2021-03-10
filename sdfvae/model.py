@@ -336,6 +336,7 @@ class SDFVAE(nn.Module):
         d_mean, d_logvar, d, h = self.encode_d(x.size(0), x_hat) 
         s_mean, s_logvar, s = self.encode_s(x_hat)
         s_expand = s.unsqueeze(1).expand(-1, self.T, self.s_dim)
+        # We concat [d_t, h_(t-1), s] and feed it to decoder network
         ds = torch.cat((d, s_expand), dim=2)
         dsh = torch.cat((ds, h), dim=2)
         recon_x_mu = self.decoder_mu(dsh)
