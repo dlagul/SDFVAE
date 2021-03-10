@@ -62,7 +62,8 @@ class Trainer(object):
         # log(N(x|mu,sigma^2))
         # = log{1/(sqrt(2*pi)*sigma)exp{-(x-mu)^2/(2*sigma^2)}} 
         # = -0.5*{log(2*pi)+2*log(sigma)+[(x-mu)/exp{log(sigma)}]^2}
-        # Note that var = sigma^2, so “recon_seq_logvar” is more appropriate to be called “recon_seq_logsigma”, but the name does not the matter
+        # Note that var = sigma^2, i.e., log(var) = 2*log(sigma),
+        # so here the “recon_seq_logvar” is more appropriate to be called “recon_seq_logsigma”, but the name does not the matter
         loglikelihood = -0.5 * torch.sum(torch.pow(((original_seq.float()-recon_seq_mu.float())/torch.exp(recon_seq_logvar.float())), 2) 
                                          + 2 * recon_seq_logvar.float() 
                                          + np.log(np.pi*2))
