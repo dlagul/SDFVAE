@@ -84,7 +84,7 @@ class Tester(object):
         # See https://arxiv.org/pdf/1606.05908.pdf, Page 9, Section 2.2 for details.
         # The constant items in the loss function (not the coefficients) can be any number here, or even omitted        
         # due to they have no any impact on gradientis propagation during training. So do in testing.
-        # log(N(x|mu,sigma^2))
+        # log(N(x|mean,var)) = log(N(x|mu,sigma^2))
         # = log{1/(sqrt(2*pi)*sigma)exp{-(x-mu)^2/(2*sigma^2)}} 
         # = -0.5*{log(2*pi)+2*log(sigma)+[(x-mu)/exp{log(sigma)}]^2}
         # Note that var = sigma^2, i.e., log(var) = 2*log(sigma)
@@ -107,7 +107,7 @@ class Tester(object):
         # The constant items in the loss function (not the coefficients) can be any number here, or even omitted        
         # due to they have no any impact on gradientis propagation during training. 
         # So do in testing, because they also have no any impact on the results (all anomaly scores increase or decrease to the same extent).
-        # log(N(x|mu,sigma^2))
+        # log(N(x|mean,var)) = log(N(x|mu,sigma^2))
         # = log{1/(sqrt(2*pi)*sigma)exp{-(x-mu)^2/(2*sigma^2)}} 
         # = -0.5*{log(2*pi)+2*log(sigma)+[(x-mu)/exp{log(sigma)}]^2}
         # Note that var = sigma^2, i.e., log(var) = 2*log(sigma)
