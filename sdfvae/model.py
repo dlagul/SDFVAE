@@ -252,7 +252,7 @@ class SDFVAE(nn.Module):
         return x
     
  
-    def decoder_logvar(self, sdh):
+    def decoder_logsigma(self, sdh):
         if self.enc_dec == 'CNN':
             x = self.deconv_fc_logvar(sdh)
             x = x.view(-1, self.cd[0], self.cd[1], self.cd[2])
@@ -341,6 +341,6 @@ class SDFVAE(nn.Module):
         ds = torch.cat((d, s_expand), dim=2)
         dsh = torch.cat((ds, h), dim=2)
         recon_x_mu = self.decoder_mu(dsh)
-        recon_x_logvar = self.decoder_logvar(dsh)
-        return s_mean, s_logvar, s, d_mean, d_logvar, d, d_mean_prior, d_logvar_prior, recon_x_mu, recon_x_logvar
+        recon_x_logsigma = self.decoder_logsigma(dsh)
+        return s_mean, s_logvar, s, d_mean, d_logvar, d, d_mean_prior, d_logvar_prior, recon_x_mu, recon_x_logsigma
     
